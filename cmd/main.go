@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"os"
 	"path"
+	"renamer/modifier"
 )
 
 func usage() {
@@ -23,13 +24,13 @@ func main() {
 		fmt.Printf("Dryrun mode\n")
 	}
 
-	if len(flag.Args() < 2) {
+	if len(flag.Args()) < 2 {
 		usage()
 	}
 
 	cmd := flag.Args()[0]
 	files := flag.Args()[1]
-	modfier, err := mkmodfier()
+	modfier, err := modifier.Mkmodifier()
 
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Invalid command: %s\n", cmd)
